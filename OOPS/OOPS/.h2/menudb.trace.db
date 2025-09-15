@@ -1,0 +1,35 @@
+2025-09-15 20:33:46.398057Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:36:39.918130Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:37:19.793324Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:39:20.829025Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:39:20.977118Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name,s1_0.menu_id,s1_0.id,s1_0.display_order,s1_0.name from menus m1_0 left join menu_sections s1_0 on m1_0.id=s1_0.menu_id where m1_0.id=? [42104-232]
+2025-09-15 20:40:00.968306Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name,s1_0.menu_id,s1_0.id,s1_0.display_order,s1_0.name from menus m1_0 left join menu_sections s1_0 on m1_0.id=s1_0.menu_id where m1_0.id=? [42104-232]
+2025-09-15 20:40:02.769095Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:40:29.956462Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menus" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.currency,m1_0.name from menus m1_0 [42104-232]
+2025-09-15 20:40:35.502253Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "items" not found (this database is empty); SQL statement:
+SELECT id, name, price_isk, available, tags FROM items ORDER BY id [42104-232]
+2025-09-15 20:40:35.558036Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "menu_sections" not found (this database is empty); SQL statement:
+    SELECT s.id as section_id, s.name as section, s.display_order,
+           i.id as item_id, i.name as item, i.price_isk, i.available
+    FROM menu_sections s
+    JOIN items i ON i.section_id = s.id
+    ORDER BY s.display_order, i.id
+ [42104-232]
