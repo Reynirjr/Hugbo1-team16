@@ -23,6 +23,7 @@ public class MenuSection {
     private Menu menu;
 
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy("id ASC")
     @JsonManagedReference
     private List<Item> items = new ArrayList<>();
 

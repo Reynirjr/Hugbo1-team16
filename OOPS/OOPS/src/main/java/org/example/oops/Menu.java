@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "menus")
 public class Menu {
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -19,6 +19,7 @@ public class Menu {
     private String currency;
 
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy("displayOrder ASC")
     @JsonManagedReference
     private List<MenuSection> sections = new ArrayList<>();
 
