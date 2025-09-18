@@ -148,12 +148,40 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
 
 \textbf{Extensions / alternate scenarios:}
 \begin{itemize}
-    \item Item sold out $\rightarrow$ System suggests alternatives.
-    \item Invalid phone number $\rightarrow$ System requests correction.
-    \item Store just closed $\rightarrow$ Order rejected.
-    \item Inventory threshold hit $\rightarrow$ Customer edits basket.
-    \item Notification delivery fails $\rightarrow$ Confirmation shown on screen, error logged.
+    \item[(2a)] Item sold out:
+    \begin{enumerate}
+        \item System notifies customer that the item is unavailable.
+        \item Customer either replaces the item or removes it from basket.
+    \end{enumerate}
+
+    \item[(4a)] Invalid phone number:
+    \begin{enumerate}
+        \item System detects phone number does not match valid format.
+        \item System requests correction from the customer.
+        \item Customer re-enters phone number.
+    \end{enumerate}
+
+    \item[(5a)] Store just closed:
+    \begin{enumerate}
+        \item System checks current store opening hours.
+        \item System rejects the order and notifies customer of closure.
+    \end{enumerate}
+
+    \item[(6a)] Inventory threshold hit:
+    \begin{enumerate}
+        \item System detects item availability is below threshold.
+        \item System prevents checkout of that item.
+        \item Customer edits basket to adjust or remove the item.
+    \end{enumerate}
+
+    \item[(7a)] Notification delivery fails:
+    \begin{enumerate}
+        \item System attempts to send confirmation to customer.
+        \item System fails to deliver via chosen channel.
+        \item System shows confirmation on screen and logs error.
+    \end{enumerate}
 \end{itemize}
+
 
 \textbf{Special requirements:}
 \begin{itemize}
@@ -200,13 +228,38 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
     \item Customers see update.
 \end{enumerate}
 
-\textbf{Extensions:}
+\textbf{Extensions / alternate scenarios:}
 \begin{itemize}
-    \item Remove item $\rightarrow$ Check open orders.
-    \item Validation error $\rightarrow$ Prompt correction.
-    \item Concurrent edit $\rightarrow$ Conflict resolution.
-    \item Cache delay $\rightarrow$ Warning shown.
+    \item[(3a)] Remove item with open orders:
+    \begin{enumerate}
+        \item Admin attempts to delete an item.
+        \item System checks if the item is part of any open orders.
+        \item If yes, system prevents deletion and notifies admin.
+        \item Admin may mark the item as unavailable instead.
+    \end{enumerate}
+
+    \item[(5a)] Validation error:
+    \begin{enumerate}
+        \item System detects invalid input (e.g., empty name, negative price).
+        \item System highlights the error field and prompts correction.
+        \item Admin corrects and retries save.
+    \end{enumerate}
+
+    \item[(6a)] Concurrent edit detected:
+    \begin{enumerate}
+        \item Another admin is editing the same item at the same time.
+        \item System notifies of conflict and provides resolution options.
+        \item Admin chooses whether to override or merge changes.
+    \end{enumerate}
+
+    \item[(8a)] Cache delay:
+    \begin{enumerate}
+        \item Customers may not immediately see the updated menu due to caching.
+        \item System shows a warning to admin about possible delay.
+        \item Updates propagate within a few seconds.
+    \end{enumerate}
 \end{itemize}
+
 
 \textbf{Special requirements:}
 \begin{itemize}
@@ -254,13 +307,37 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
     \item Confirmation shown.
 \end{enumerate}
 
-\textbf{Extensions:}
+\textbf{Extensions / alternate scenarios:}
 \begin{itemize}
-    \item Auto-suggested queue time available.
-    \item Out-of-range input $\rightarrow$ Suggest correction.
-    \item Existing orders unaffected but flagged if discrepancies.
-    \item Scheduled rules can override.
+    \item[(4a)] Auto-suggested queue time:
+    \begin{enumerate}
+        \item System analyzes order volume and historical averages.
+        \item System proposes a recommended queue time.
+        \item Staff may accept or override the suggestion.
+    \end{enumerate}
+
+    \item[(5a)] Out-of-range input:
+    \begin{enumerate}
+        \item Staff enters a queue time outside valid limits.
+        \item System rejects the input and suggests a valid range.
+        \item Staff re-enters a valid value.
+    \end{enumerate}
+
+    \item[(6a)] Existing orders flagged:
+    \begin{enumerate}
+        \item Queue time update applies only to new orders.
+        \item System flags existing pending orders if discrepancies arise.
+        \item Staff reviews flagged orders as needed.
+    \end{enumerate}
+
+    \item[(6b)] Scheduled rules override:
+    \begin{enumerate}
+        \item A scheduled rule (e.g., lunch rush adjustment) is active.
+        \item System notifies staff that the manual change is overridden.
+        \item Staff may adjust the schedule instead if necessary.
+    \end{enumerate}
 \end{itemize}
+
 
 \textbf{Special requirements:}
 \begin{itemize}
@@ -298,22 +375,21 @@ A staff member updates the status of an order, such as moving it from Pending to
 
 We use a \textbf{grouped priority system} where a lower number means higher priority (P1 > P2 > P3).
 Time estimates are in \textbf{person hours}.
-
 \begin{center}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{Use Case} & \textbf{Time Estimation (hours)} & \textbf{Priority} \\ \hline
-UC1: Place Order (Pay at Pickup)                 & 10 & P1 \\ \hline
-UC2: Manage Menu                                 & 15 & P1 \\ \hline
-UC3: Set Order Queue Time                        & 12 & P2 \\ \hline
-UC4: View Menu                                   & 5  & P1 \\ \hline
-UC5: Sign In (Staff/Admin)                       & 6  & P2 \\ \hline
-UC6: View Sales Report                           & 8  & P2 \\ \hline
-UC7: Adjust Opening Hours \& Exceptions (Admin)  & 6  & P3 \\ \hline
-UC8: Manage Roles \& Access (Admin)              & 6  & P3 \\ \hline
-UC9: View Order Status (Customer)                & 5  & P2 \\ \hline
-UC10: Set Order Status (Staff)                   & 6  & P2 \\ \hline
+UC1: Place Order (Pay at Pickup)                 & 10 & P0 \\ \hline
+UC2: Manage Menu                                 & 15 & P0 \\ \hline
+UC3: Set Order Queue Time                        & 12 & P1 \\ \hline
+UC4: View Menu                                   & 5  & P0 \\ \hline
+UC5: Sign In (Staff/Admin)                       & 6  & P1 \\ \hline
+UC6: View Sales Report                           & 8  & P1 \\ \hline
+UC7: Adjust Opening Hours \& Exceptions (Admin)  & 6  & P2 \\ \hline
+UC8: Manage Roles \& Access (Admin)              & 6  & P2 \\ \hline
+UC9: View Order Status (Customer)                & 5  & P1 \\ \hline
+UC10: Set Order Status (Staff)                   & 6  & P1 \\ \hline
 \end{tabular}
 \end{adjustbox}
 \end{center}
@@ -337,7 +413,7 @@ Each sprint has a designated Product Owner (P.O.).
 5  & Testing UC1--UC6; integration                & \textasciitilde15 & JJO & 2 & Dev support \\ \hline
 6  & UC7: Opening Hours; UC8: Roles; UC9: Order Status (Cust); UC10: Order Status (Staff) & \textasciitilde20 & HFD & 3 & \textbf{A3 Presentation} \\ \hline
 7  & Scaling improvements; performance checks     & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
-8  & Final features; polish UI/UX                 & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
+8  & Final features; Print orders                & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
 9  & Final testing; bug fixes                     & \textasciitilde20 & ROS & 4 & A4 Prep \\ \hline
 10 & Delivery; deployment; presentation           & \textasciitilde15 & ROS & 4 & Final Presentation \\ \hline
 \end{tabular}
