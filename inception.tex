@@ -245,19 +245,7 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
         \item Admin corrects and retries save.
     \end{enumerate}
 
-    \item[(6a)] Concurrent edit detected:
-    \begin{enumerate}
-        \item Another admin is editing the same item at the same time.
-        \item System notifies of conflict and provides resolution options.
-        \item Admin chooses whether to override or merge changes.
-    \end{enumerate}
 
-    \item[(8a)] Cache delay:
-    \begin{enumerate}
-        \item Customers may not immediately see the updated menu due to caching.
-        \item System shows a warning to admin about possible delay.
-        \item Updates propagate within a few seconds.
-    \end{enumerate}
 \end{itemize}
 
 
@@ -309,12 +297,6 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
 
 \textbf{Extensions / alternate scenarios:}
 \begin{itemize}
-    \item[(4a)] Auto-suggested queue time:
-    \begin{enumerate}
-        \item System analyzes order volume and historical averages.
-        \item System proposes a recommended queue time.
-        \item Staff may accept or override the suggestion.
-    \end{enumerate}
 
     \item[(5a)] Out-of-range input:
     \begin{enumerate}
@@ -323,18 +305,12 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
         \item Staff re-enters a valid value.
     \end{enumerate}
 
-    \item[(6a)] Existing orders flagged:
-    \begin{enumerate}
-        \item Queue time update applies only to new orders.
-        \item System flags existing pending orders if discrepancies arise.
-        \item Staff reviews flagged orders as needed.
-    \end{enumerate}
 
     \item[(6b)] Scheduled rules override:
     \begin{enumerate}
         \item A scheduled rule (e.g., lunch rush adjustment) is active.
-        \item System notifies staff that the manual change is overridden.
-        \item Staff may adjust the schedule instead if necessary.
+        \item System prompts staff for new queue time during a scheduled rule.
+        \item Staff may adjust the schedule if necessary.
     \end{enumerate}
 \end{itemize}
 
