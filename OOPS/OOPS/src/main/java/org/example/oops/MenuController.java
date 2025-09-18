@@ -45,4 +45,24 @@ public class MenuController {
         return item;
     }
 
+    @PostMapping("/{menuId}/items")
+    public Item createItem(@PathVariable Integer menuId, @RequestBody CreateItemRequest request) {
+        // make sure section exists and belongs to the menu
+        MenuSection section = repo.findById(menuId)
+                .flatMap(menu -> menu.getSections().stream()
+                        .filter(s -> s.getId().equals(request.getSectionId()))
+                        .findFirst())
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid section for this menu"));
+
+        Item item = new Item();
+        item.setName(request.getName());
+        item.setDescription(request.getDescription());
+        item.setPriceIsk(request.getPriceIsk());
+        item.setAvailable(request.isAvailable());
+        item.setTags(request.getTags());
+        item.setSection(section);
+
+        return items.save(item);
+    }
 }
