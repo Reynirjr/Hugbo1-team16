@@ -324,10 +324,11 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
 \textbf{Frequency:} Variable, often during peaks.\\
 \textbf{Open issues:} Policy on updating existing orders, scheduled vs. ad-hoc overrides.
 
-\newpage
+
+
 
 \paragraph{UC4: View Menu}  
-A customer selects a restaurant and the system shows the current menu with categories, item names, descriptions, prices, and real-time availability. The customer can expand items to see options/modifiers and add items to their basket. The system ensures only currently available items are shown and reflects temporary “sold out” statuses immediately.
+A customer selects a restaurant and the system shows the current menu with categories, item names, descriptions, prices, photos, and real-time availability. Information including photos are uploaded by the restaurant owner and retrieved from the database through an advanced endpoint, ensuring customers see up-to-date visual representations of items. The system ensures only currently available items are shown and reflects temporary “sold out” statuses immediately.
 
 \paragraph{UC5: Sign In (Staff/Admin)}  
 A staff member or admin provides credentials; the system authenticates and grants access to role-appropriate features (orders dashboard for staff; menu and reports for admin). Failed attempts are limited and logged; on success, the user is taken to the relevant workspace.
@@ -346,6 +347,7 @@ A customer enters their order ID (and optionally phone number) to check the curr
 
 \paragraph{UC10: Set Order Status (Staff)}  
 A staff member updates the status of an order, such as moving it from Pending to Preparing, from Preparing to Ready, and finally to Closed once picked up. The system records each update, ensures proper sequence of states, and notifies the customer if applicable.
+
 
 \section{Project Estimation and Prioritization}
 
