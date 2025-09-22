@@ -47,7 +47,6 @@ public class MenuController {
 
     @PostMapping("/{menuId}/items")
     public Item createItem(@PathVariable Integer menuId, @RequestBody CreateItemRequest request) {
-        // make sure section exists and belongs to the menu
         MenuSection section = repo.findById(menuId)
                 .flatMap(menu -> menu.getSections().stream()
                         .filter(s -> s.getId().equals(request.getSectionId()))
@@ -65,4 +64,48 @@ public class MenuController {
 
         return items.save(item);
     }
+
+    @PutMapping("/{menuId}/items/{itemId}")
+    public Item updateItem(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId,
+            @RequestBody CreateItemRequest request) {
+        Item existing = items.findByMenuIdAndItemId(menuId, itemId);
+        if (existing == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
+        }
+        existing.setName(request.getName());
+        existing.setDescription(request.getDescription());
+        existing.setPriceIsk(request.getPriceIsk());
+        existing.setAvailable(request.isAvailable());
+        existing.setTags(request.getTags());
+
+        if (request.getSectionId() != null && !request.getSectionId().equals(existing.getSection().getId())) {
+            Menu menu = repo.findById(menuId)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Menu not found"));
+
+            MenuSection newSection = menu.getSections().stream()
+                    .filter(s -> s.getId().equals(request.getSectionId()))
+                    .findFirst()
+                    .orElseThrow(
+                            () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid section for this menu"));
+
+            existing.setSection(newSection);
+        }
+
+        return items.save(existing);
+    }
+
+    @DeleteMapping("/{menuId}/items/{itemId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteItem(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId) {
+        Item existing = items.findByMenuIdAndItemId(menuId, itemId);
+        if (existing == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
+        }
+        items.delete(existing);
+    }
+
 }

@@ -8,6 +8,7 @@ public class OopsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OopsApplication.class, args);
+		System.out.println("API is running at: http://localhost:8080/api/menus");
 	}
 
 }
