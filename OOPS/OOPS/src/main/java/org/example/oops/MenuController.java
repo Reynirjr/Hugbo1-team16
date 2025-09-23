@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import java.util.List;
 
 @RestController
@@ -98,14 +99,12 @@ public class MenuController {
 
     @DeleteMapping("/{menuId}/items/{itemId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteItem(
-            @PathVariable Integer menuId,
+    public void deleteItem(@PathVariable Integer menuId,
             @PathVariable Integer itemId) {
-        Item existing = items.findByMenuIdAndItemId(menuId, itemId);
-        if (existing == null) {
+        int deleted = items.deleteByMenuIdAndItemId(menuId, itemId);
+        if (deleted == 0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
         }
-        items.delete(existing);
     }
 
 }
