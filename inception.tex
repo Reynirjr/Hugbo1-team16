@@ -245,6 +245,7 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
         \item Admin corrects and retries save.
     \end{enumerate}
 
+<<<<<<< HEAD
     \item[(6a)] Concurrent edit detected:
     \begin{enumerate}
         \item Another admin is editing the same item at the same time.
@@ -258,6 +259,9 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
         \item System shows a warning to admin about possible delay.
         \item Updates propagate within a few seconds.
     \end{enumerate}
+=======
+
+>>>>>>> origin/main
 \end{itemize}
 
 
@@ -309,12 +313,15 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
 
 \textbf{Extensions / alternate scenarios:}
 \begin{itemize}
+<<<<<<< HEAD
     \item[(4a)] Auto-suggested queue time:
     \begin{enumerate}
         \item System analyzes order volume and historical averages.
         \item System proposes a recommended queue time.
         \item Staff may accept or override the suggestion.
     \end{enumerate}
+=======
+>>>>>>> origin/main
 
     \item[(5a)] Out-of-range input:
     \begin{enumerate}
@@ -323,18 +330,26 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
         \item Staff re-enters a valid value.
     \end{enumerate}
 
+<<<<<<< HEAD
     \item[(6a)] Existing orders flagged:
     \begin{enumerate}
         \item Queue time update applies only to new orders.
         \item System flags existing pending orders if discrepancies arise.
         \item Staff reviews flagged orders as needed.
     \end{enumerate}
+=======
+>>>>>>> origin/main
 
     \item[(6b)] Scheduled rules override:
     \begin{enumerate}
         \item A scheduled rule (e.g., lunch rush adjustment) is active.
+<<<<<<< HEAD
         \item System notifies staff that the manual change is overridden.
         \item Staff may adjust the schedule instead if necessary.
+=======
+        \item System prompts staff for new queue time during a scheduled rule.
+        \item Staff may adjust the schedule if necessary.
+>>>>>>> origin/main
     \end{enumerate}
 \end{itemize}
 
@@ -348,10 +363,11 @@ Unlike traditional phone-based ordering or existing delivery platforms that ofte
 \textbf{Frequency:} Variable, often during peaks.\\
 \textbf{Open issues:} Policy on updating existing orders, scheduled vs. ad-hoc overrides.
 
-\newpage
+
+
 
 \paragraph{UC4: View Menu}  
-A customer selects a restaurant and the system shows the current menu with categories, item names, descriptions, prices, and real-time availability. The customer can expand items to see options/modifiers and add items to their basket. The system ensures only currently available items are shown and reflects temporary “sold out” statuses immediately.
+A customer selects a restaurant and the system shows the current menu with categories, item names, descriptions, prices, photos, and real-time availability. Information including photos are uploaded by the restaurant owner and retrieved from the database through an advanced endpoint, ensuring customers see up-to-date visual representations of items. The system ensures only currently available items are shown and reflects temporary “sold out” statuses immediately.
 
 \paragraph{UC5: Sign In (Staff/Admin)}  
 A staff member or admin provides credentials; the system authenticates and grants access to role-appropriate features (orders dashboard for staff; menu and reports for admin). Failed attempts are limited and logged; on success, the user is taken to the relevant workspace.
@@ -371,26 +387,26 @@ A customer enters their order ID (and optionally phone number) to check the curr
 \paragraph{UC10: Set Order Status (Staff)}  
 A staff member updates the status of an order, such as moving it from Pending to Preparing, from Preparing to Ready, and finally to Closed once picked up. The system records each update, ensures proper sequence of states, and notifies the customer if applicable.
 
+
 \section{Project Estimation and Prioritization}
 
 We use a \textbf{grouped priority system} where a lower number means higher priority (P1 > P2 > P3).
 Time estimates are in \textbf{person hours}.
-
 \begin{center}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{Use Case} & \textbf{Time Estimation (hours)} & \textbf{Priority} \\ \hline
-UC1: Place Order (Pay at Pickup)                 & 10 & P1 \\ \hline
-UC2: Manage Menu                                 & 15 & P1 \\ \hline
-UC3: Set Order Queue Time                        & 12 & P2 \\ \hline
-UC4: View Menu                                   & 5  & P1 \\ \hline
-UC5: Sign In (Staff/Admin)                       & 6  & P2 \\ \hline
-UC6: View Sales Report                           & 8  & P2 \\ \hline
-UC7: Adjust Opening Hours \& Exceptions (Admin)  & 6  & P3 \\ \hline
-UC8: Manage Roles \& Access (Admin)              & 6  & P3 \\ \hline
-UC9: View Order Status (Customer)                & 5  & P2 \\ \hline
-UC10: Set Order Status (Staff)                   & 6  & P2 \\ \hline
+UC1: Place Order (Pay at Pickup)                 & 10 & P0 \\ \hline
+UC2: Manage Menu                                 & 15 & P0 \\ \hline
+UC3: Set Order Queue Time                        & 12 & P1 \\ \hline
+UC4: View Menu                                   & 5  & P0 \\ \hline
+UC5: Sign In (Staff/Admin)                       & 6  & P1 \\ \hline
+UC6: View Sales Report                           & 8  & P1 \\ \hline
+UC7: Adjust Opening Hours \& Exceptions (Admin)  & 6  & P2 \\ \hline
+UC8: Manage Roles \& Access (Admin)              & 6  & P2 \\ \hline
+UC9: View Order Status (Customer)                & 5  & P1 \\ \hline
+UC10: Set Order Status (Staff)                   & 6  & P1 \\ \hline
 \end{tabular}
 \end{adjustbox}
 \end{center}
@@ -414,7 +430,7 @@ Each sprint has a designated Product Owner (P.O.).
 5  & Testing UC1--UC6; integration                & \textasciitilde15 & JJO & 2 & Dev support \\ \hline
 6  & UC7: Opening Hours; UC8: Roles; UC9: Order Status (Cust); UC10: Order Status (Staff) & \textasciitilde20 & HFD & 3 & \textbf{A3 Presentation} \\ \hline
 7  & Scaling improvements; performance checks     & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
-8  & Final features; polish UI/UX                 & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
+8  & Final features; Print orders                & \textasciitilde15 & HFD & 3 & Dev support \\ \hline
 9  & Final testing; bug fixes                     & \textasciitilde20 & ROS & 4 & A4 Prep \\ \hline
 10 & Delivery; deployment; presentation           & \textasciitilde15 & ROS & 4 & Final Presentation \\ \hline
 \end{tabular}
