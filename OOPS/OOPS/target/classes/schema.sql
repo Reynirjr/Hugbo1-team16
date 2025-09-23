@@ -33,3 +33,19 @@ CREATE TABLE IF NOT EXISTS basket_items (
     item_id INT NOT NULL REFERENCES items(id) ON DELETE RESTRICT,
     quantity INT NOT NULL CHECK (quantity >= 0)
     );
+
+CREATE TABLE IF NOT EXISTS store_settings (
+  id           SMALLINT PRIMARY KEY DEFAULT 1,
+  queue_minutes INT NOT NULL DEFAULT 20,
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_by    TEXT
+);
+
+CREATE TABLE IF NOT EXISTS queue_time_changes (
+  id           BIGSERIAL PRIMARY KEY,
+  old_minutes  INT NOT NULL,
+  new_minutes  INT NOT NULL,
+  changed_by   TEXT,
+  changed_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
