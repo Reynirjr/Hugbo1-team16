@@ -49,3 +49,21 @@ CREATE TABLE IF NOT EXISTS queue_time_changes (
   changed_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  basket_id UUID,
+  customer_phone TEXT,
+  status TEXT NOT NULL DEFAULT 'RECEIVED',
+  total_isk INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS order_items (
+  id SERIAL PRIMARY KEY,
+  order_id INT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  item_id INT NOT NULL REFERENCES items(id) ON DELETE RESTRICT,
+  item_name TEXT NOT NULL,
+  price_isk INT NOT NULL,
+  quantity INT NOT NULL CHECK (quantity > 0)
+);
+
