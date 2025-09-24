@@ -1,0 +1,53 @@
+package org.example.oops;
+
+import jakarta.transaction.Transactional;
+import org.example.oops.repository.BasketRepository;
+import org.example.oops.repository.OrderRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+@Service
+public class OrderService {
+    private final BasketRepository baskets;
+    private final OrderRepository orders;
+
+    public OrderService(BasketRepository baskets, OrderRepository orders) {
+        this.baskets = baskets;
+        this.orders = orders;
+    }
+
+    @Transactional
+    public Order createFromBasket(UUID basketId, String phone){
+        Basket basket = baskets.findById(basketId)
+                .orElseThrow(() -> new RuntimeException("Basket not found"));
+        if(basket.getItems().isEmpty()){
+            throw new RuntimeException("Basket is empty");
+        }
+
+        Order order = new Order();
+        order.setBasketId(basketId);
+        if (phone != null && !phone.isBlank()) order.setCustomerPhone(phone);
+
+        int total = 0;
+        for (BasketItem bi : basket.getItems()) {
+            Item it = bi.getItem();
+            int line = it.getPriceIsk() * bi.getQuantity();
+            total += line;
+            order.getItems().add(new OrderItem(
+                    order, it.getId(), it.getName(), it.getPriceIsk(), bi.getQuantity()
+            ));
+        }
+        order.setTotalIsk(total);
+        Order saved = orders.save(order);
+
+        baskets.delete(basket);
+        return saved;
+    }
+
+    public Order get(Integer id){
+        return orders.findById(id).orElseThrow();
+    }
+
+
+}
