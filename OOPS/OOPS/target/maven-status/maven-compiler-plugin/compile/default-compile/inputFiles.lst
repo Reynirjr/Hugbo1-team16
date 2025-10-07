@@ -3,7 +3,9 @@ C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\BasketItem.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\BasketService.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\CreateItemRequest.java
+C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\CustomUserDetailsService.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\DebugController.java
+C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\GenerateHash.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Item.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Menu.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\MenuController.java
@@ -22,6 +24,9 @@ C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderRepository.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\QueueTimeChangeRepository.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\StoreSettingRepository.java
+C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\UserRepository.java
+C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SecurityConfig.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SettingsController.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SettingsService.java
 C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\StoreSetting.java
+C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\User.java

@@ -1,6 +1,7 @@
 package org.example.oops;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,12 +20,12 @@ public class Item {
 
     private boolean available;
 
-    // keep as plain text now (DB column is TEXT)
     @Column
     private String tags;
 
-    @Column(name = "image_data", columnDefinition = "BYTEA", nullable = false)
-    private byte[] imageData;
+    @Column(name = "image_data", columnDefinition = "BYTEA", nullable = true)
+    private byte[] imageData = new byte[0];
+
 
     @ManyToOne
     @JoinColumn(name = "section_id")
