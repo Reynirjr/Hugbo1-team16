@@ -5,9 +5,11 @@ import org.example.oops.repository.ItemRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/menus")
@@ -46,6 +48,7 @@ public class MenuController {
         return item;
     }
 
+    @PreAuthorize("hasRole('SUPERUSER')")
     @PostMapping("/{menuId}/items")
     public Item createItem(@PathVariable Integer menuId, @RequestBody CreateItemRequest request) {
         MenuSection section = repo.findById(menuId)
@@ -66,6 +69,7 @@ public class MenuController {
         return items.save(item);
     }
 
+    @PreAuthorize("hasRole('SUPERUSER')")
     @PutMapping("/{menuId}/items/{itemId}")
     public Item updateItem(
             @PathVariable Integer menuId,
@@ -97,6 +101,7 @@ public class MenuController {
         return items.save(existing);
     }
 
+    @PreAuthorize("hasRole('SUPERUSER')")
     @DeleteMapping("/{menuId}/items/{itemId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteItem(@PathVariable Integer menuId,
@@ -107,4 +112,17 @@ public class MenuController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('SUPERUSER','STAFF')")
+    @PutMapping("/{menuId}/items/{itemId}/availability")
+    public Item updateAvailability(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId,
+            @RequestParam boolean available) {
+        Item item = items.findByMenuIdAndItemId(menuId, itemId);
+        if (item == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
+        }
+        item.setAvailable(available);
+        return items.save(item);
+    }
 }
