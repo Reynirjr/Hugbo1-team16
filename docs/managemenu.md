@@ -2,12 +2,35 @@
 
 ### 🍔 OOPS Menu API
 
-These API calls manage **menus** for OOPS.
+These Api calls manage **menus** for OOPS.
 
 ---
 
 ## Base URL
 http://localhost:8080/api
+
+
+
+---
+
+## 🔐 Authentication
+
+### Public (no login needed)
+- `GET /menus`
+- `GET /menus/{menuId}`
+- `GET /menus/{menuId}/items`
+- `GET /menus/{menuId}/items/{itemId}`
+
+### Requires login (`admin` or `staff`)
+- `POST /menus/{menuId}/items`
+- `PUT /menus/{menuId}/items/{itemId}`
+- `DELETE /menus/{menuId}/items/{itemId}`
+- `DELETE /menus/{menuId}`
+- `POST /menus/{menuId}/items/{itemId}/image`
+
+**Use Basic Auth:**
+Username: admin &
+Password: admin123
 
 
 ---
@@ -16,11 +39,11 @@ http://localhost:8080/api
 
 ### 🔹 Menus
 
-| Method | Endpoint              | Description                                  | Request Body | Response       |
-|--------|-----------------------|----------------------------------------------|--------------|----------------|
-| GET    | `/menus`              | Get all menus                                | –            | `[Menu]`       |
-| GET    | `/menus/{menuId}`     | Get a menu by ID (with sections and items)   | –            | `Menu`         |
-| DELETE | `/menus/{menuId}`     | Delete a menu (cascade: deletes sections + items) | –            | `204 No Content` |
+| Method | Endpoint              | Description                                        | Auth Required | Response       |
+|--------|-----------------------|----------------------------------------------------|----------------|----------------|
+| GET    | `/menus`              | Get all menus (with sections & items)              | ❌ No          | `[Menu]`       |
+| GET    | `/menus/{menuId}`     | Get a specific menu by ID                          | ❌ No          | `Menu`         |
+| DELETE | `/menus/{menuId}`     | Delete a menu (also deletes its sections & items)  | ✅ Yes         | `204 No Content` |
 
 ---
 
@@ -28,14 +51,14 @@ http://localhost:8080/api
 
 Items belong to a **menu section** inside a menu.
 
-| Method | Endpoint                             | Description                  | Request Body         | Response   |
-|--------|--------------------------------------|------------------------------|----------------------|------------|
-| GET    | `/menus/{menuId}/items`              | Get all items for a menu     | –                    | `[Item]`   |
-| GET    | `/menus/{menuId}/items/{itemId}`     | Get one item from a menu     | –                    | `Item`     |
-| POST   | `/menus/{menuId}/items`              | Create new item in a menu    | `CreateItemRequest`  | `Item`     |
-| PUT    | `/menus/{menuId}/items/{itemId}`     | Update an item               | `CreateItemRequest`  | `Item`     |
-| DELETE | `/menus/{menuId}/items/{itemId}`     | Delete an item from a menu   | –                    | `204 No Content` |
-| POST   | `/menus/{menuId}/items/{itemId}/image` | Upload an image for an item | `multipart/form-data` (field: `file`) | `Item` (with `imageUrl`) |
+| Method | Endpoint                             | Description                        | Auth Required | Request Body | Response   |
+|--------|--------------------------------------|------------------------------------|----------------|---------------|-------------|
+| GET    | `/menus/{menuId}/items`              | Get all items for a menu           | ❌ No          | –             | `[Item]`   |
+| GET    | `/menus/{menuId}/items/{itemId}`     | Get a specific item by ID          | ❌ No          | –             | `Item`     |
+| POST   | `/menus/{menuId}/items`              | Create a new menu item             | ✅ Yes         | `CreateItemRequest` | `Item`     |
+| PUT    | `/menus/{menuId}/items/{itemId}`     | Update an existing item            | ✅ Yes         | `CreateItemRequest` | `Item`     |
+| DELETE | `/menus/{menuId}/items/{itemId}`     | Delete an item from a menu         | ✅ Yes         | –             | `204 No Content` |
+| POST   | `/menus/{menuId}/items/{itemId}/image` | Upload or update an image for an item | ✅ Yes      | `multipart/form-data` (`file`) | `Item` (with image info) |
 
 ---
 
@@ -49,6 +72,7 @@ Items belong to a **menu section** inside a menu.
   "currency": "ISK",
   "sections": [ MenuSection ]
 }
+
 ```
 ### MenuSection
 ```json
@@ -64,23 +88,43 @@ Items belong to a **menu section** inside a menu.
 {
   "id": 2,
   "name": "Veggie Burger",
-  "description": "Black bean patty",
+  "description": "Black bean patty with avocado",
   "priceIsk": 1790,
   "available": true,
   "tags": "[\"veg\"]",
-  "imageUrl": "/images/veggie-burger.jpg"
+  "imageData": ""
+}
+```
+## 🧾 Request Examples
+
+### ➕ Create Item
+
+**POST** `/api/menus/1/items`
+
+```json
+{
+  "name": "Veisluplatti",
+  "description": "Smáborgarar",
+  "priceIsk": 4490,
+  "available": true,
+  "tags": "[\"meat\", \"cheesy\"]",
+  "imageData": "",
+  "sectionId": 1
 }
 ```
 
-### CreateItemRequest
+### ✏️ Update Item
+
+**PUT** `/api/menus/1/items/5`
+
 ```json
 {
-  "name": "Vegan Burger",
-  "description": "Plant-based patty with lettuce and tomato",
-  "priceIsk": 2200,
+  "name": "Classic Cheeseburger",
+  "description": "Juicy beef, cheese, and tomato",
+  "priceIsk": 2190,
   "available": true,
-  "tags": "[\"vegan\", \"burger\"]",
-  "sectionId": 1,
-  "imageUrl": "/images/vegan-burger.jpg"
+  "tags": "[\"beef\", \"classic\"]",
+  "imageData": "",
+  "sectionId": 1
 }
 ```
