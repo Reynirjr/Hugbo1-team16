@@ -83,3 +83,4 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
+  
