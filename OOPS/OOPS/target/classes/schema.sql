@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS items (
     description TEXT NOT NULL DEFAULT '',
     price_isk INT NOT NULL CHECK (price_isk >= 0),
     available BOOLEAN NOT NULL DEFAULT TRUE,
-    tags TEXT
-    );
-
+    tags TEXT,
+    image_data BYTEA
+);
 
 CREATE TABLE IF NOT EXISTS baskets (
     id UUID PRIMARY KEY,
@@ -49,3 +49,37 @@ CREATE TABLE IF NOT EXISTS queue_time_changes (
   changed_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  basket_id UUID,
+  customer_phone TEXT,
+  status TEXT NOT NULL DEFAULT 'RECEIVED',
+  total_isk INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS order_items (
+  id SERIAL PRIMARY KEY,
+  order_id INT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  item_id INT NOT NULL REFERENCES items(id) ON DELETE RESTRICT,
+  item_name TEXT NOT NULL,
+  price_isk INT NOT NULL,
+  quantity INT NOT NULL CHECK (quantity > 0)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+INSERT INTO users (username, password, role)
+VALUES
+('admin', '$2a$10$9GCRJGQbdQqRdNrGvEP9ku5WgVtM/ACdTdWWzn.OqaEqRWqLsEySC', 'SUPERUSER'),
+('staff', '$2a$10$iL2gg5M.eFquLz5o1kUK/eoHlSSVhyT6VZH7169375crNMoLD8fYq', 'STAFF')
+ON CONFLICT (username) DO UPDATE
+SET password = EXCLUDED.password,
+    role = EXCLUDED.role;
