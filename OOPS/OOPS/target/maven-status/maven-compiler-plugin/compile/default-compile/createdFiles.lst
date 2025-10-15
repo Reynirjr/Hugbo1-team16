@@ -1,5 +1,6 @@
 org\example\oops\repository\MenuRepository.class
 org\example\oops\BasketItem.class
+org\example\oops\security\JwtUtil.class
 org\example\oops\Item.class
 org\example\oops\repository\OrderItemRepository.class
 org\example\oops\SettingsService.class
@@ -27,7 +28,9 @@ org\example\oops\CustomUserDetailsService.class
 org\example\oops\SecurityConfig.class
 org\example\oops\User.class
 org\example\oops\Order.class
+org\example\oops\AuthController.class
 org\example\oops\BasketService.class
 org\example\oops\OrderController.class
 org\example\oops\DebugController.class
 org\example\oops\OrderItem.class
+org\example\oops\security\JwtAuthFilter.class
