@@ -30,11 +30,11 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // 🟢 Public endpoints
                 .requestMatchers(
-                    "/api/auth/**",   // login/register
-                    "/api/menus/**",  // open to everyone
-                    "/error"
+                    "/api/auth/**",   
+                    "/api/menus/**",  
+                    "/error",
+                    "/api/baskets/**"
                 ).permitAll()
 
                 // 🔒 Everything else requires JWT
