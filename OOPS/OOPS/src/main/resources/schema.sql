@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS orders (
   basket_id UUID,
   customer_phone TEXT,
   status TEXT NOT NULL DEFAULT 'RECEIVED',
-  total_isk INT NOT NULL
+  total_isk INT NOT NULL,
   estimated_ready_at TIMESTAMPTZ
 );
 
