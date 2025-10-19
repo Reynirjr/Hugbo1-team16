@@ -31,13 +31,20 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/api/auth/**",
-                    "/api/menus/**",
-                    "/error","/",
-                        "api/orders",
-                        "api/orders/**"
+
+                "/api/auth/**",
+                "/api/menus/**",
+                "/api/baskets/**",
+                "/api/orders/**",
+                "/api/hours/**",
+                "/error"
+
+
+
+
                 ).permitAll()
 
+                // 🔒 Everything else requires JWT
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

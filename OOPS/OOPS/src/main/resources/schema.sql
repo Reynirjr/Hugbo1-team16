@@ -85,5 +85,18 @@ ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
 
-ALTER TABLE IF EXISTS items ADD COLUMN IF NOT EXISTS image_data BYTEA;
 
+CREATE TABLE IF NOT EXISTS opening_hours (
+    id SERIAL PRIMARY KEY,
+    weekday VARCHAR(20),
+    open_time VARCHAR(10),
+    close_time VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS opening_exceptions (
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    open_time VARCHAR(10),
+    close_time VARCHAR(10),
+    closed BOOLEAN
+);
