@@ -37,7 +37,6 @@ public class SecurityConfig {
                     "/api/baskets/**"
                 ).permitAll()
 
-                // 🔒 Everything else requires JWT
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -3,6 +3,7 @@ org\example\oops\BasketItem.class
 org\example\oops\security\JwtUtil.class
 org\example\oops\Item.class
 org\example\oops\repository\OrderItemRepository.class
+org\example\oops\UserController.class
 org\example\oops\SettingsService.class
 org\example\oops\GenerateHash.class
 org\example\oops\repository\OrderRepository.class
