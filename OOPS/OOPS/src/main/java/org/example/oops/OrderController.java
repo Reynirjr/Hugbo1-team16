@@ -22,8 +22,11 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, Object> create(@RequestParam UUID basketId,
-                                      @RequestParam(required = false) String phone) {
+    public Map<String, Object> create(
+            @RequestParam UUID basketId,
+            @RequestParam(required = false) String phone
+    ) {
+        if (phone != null) phone = phone.trim();
         Order o = service.createFromBasket(basketId, phone);
         return orderPayload(o, service.estimatePickupTime(o.getCreatedAt()));
     }
@@ -36,7 +39,8 @@ public class OrderController {
 
     @GetMapping("/by-phone")
     public List<Map<String, Object>> getByPhone(@RequestParam String phone) {
-        return orders.findByCustomerPhoneOrderByIdDesc(phone).stream()
+        String normalized = phone.trim();
+        return orders.findByCustomerPhoneOrderByIdDesc(normalized).stream()
                 .map(o -> orderPayload(o, service.estimatePickupTime(o.getCreatedAt())))
                 .collect(Collectors.toList());
     }

@@ -6,7 +6,6 @@ import org.example.oops.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Service
@@ -15,22 +14,27 @@ public class OrderService {
     private final OrderRepository orders;
     private final SettingsService settings;
 
-    public OrderService(BasketRepository baskets, OrderRepository orders) {
+    public OrderService(BasketRepository baskets, OrderRepository orders, SettingsService settings) {
         this.baskets = baskets;
         this.orders = orders;
         this.settings = settings;
     }
 
-    public Instant estimatePickupTime(Instant createdAt) {
-        int queueMins = settings.getQueueMinutes();
-        return createdAt.plus(queueMins, ChronoUnit.MINUTES);
+    public Instant estimatePickupTime(Instant reference) {
+        int minutes = settings.getQueueMinutes();
+        Instant base = (reference != null) ? reference : Instant.now();
+        return base.plusSeconds(minutes * 60L);
+    }
+
+    public Instant estimatePickupTimeNow() {
+        return estimatePickupTime(Instant.now());
     }
 
     @Transactional
-    public Order createFromBasket(UUID basketId, String phone){
+    public Order createFromBasket(UUID basketId, String phone) {
         Basket basket = baskets.findById(basketId)
                 .orElseThrow(() -> new RuntimeException("Basket not found"));
-        if(basket.getItems().isEmpty()){
+        if (basket.getItems().isEmpty()) {
             throw new RuntimeException("Basket is empty");
         }
 
@@ -57,6 +61,4 @@ public class OrderService {
     public Order get(Integer id){
         return orders.findById(id).orElseThrow();
     }
-
-
 }
