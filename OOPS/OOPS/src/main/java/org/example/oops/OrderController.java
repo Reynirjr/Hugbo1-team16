@@ -27,10 +27,11 @@ public class OrderController {
         );
     }
 
-    @GetMapping
-    public Order get(@PathVariable Integer id){
+    @GetMapping("/{id}")
+    public Order get(@PathVariable Integer id) {
         return service.get(id);
     }
+
 
     public static void main(String[] args) {
 
