@@ -7,11 +7,15 @@ C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\e
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\CustomUserDetailsService.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\DebugController.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\GenerateHash.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\HoursController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\HoursService.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Item.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Menu.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\MenuController.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\MenuSection.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OopsApplication.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OpeningException.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OpeningHour.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Order.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderController.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderItem.java
@@ -21,6 +25,8 @@ C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\e
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketRepository.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\ItemRepository.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\MenuRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OpeningExceptionRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OpeningHourRepository.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderItemRepository.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderRepository.java
 C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\QueueTimeChangeRepository.java

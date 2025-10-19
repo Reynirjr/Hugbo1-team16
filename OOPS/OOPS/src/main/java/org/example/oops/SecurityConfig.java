@@ -32,9 +32,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // 🟢 Public endpoints
                 .requestMatchers(
-                    "/api/auth/**",   // login/register
-                    "/api/menus/**",  // open to everyone
-                    "/error"
+                "/api/auth/**",
+                "/api/menus/**",
+                "/api/baskets/**",
+                "/api/orders/**",
+                "/api/hours/**",    
+                "/error"
+                
                 ).permitAll()
 
                 // 🔒 Everything else requires JWT
