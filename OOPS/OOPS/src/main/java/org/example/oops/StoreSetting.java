@@ -8,7 +8,7 @@ import java.time.Instant;
 @Table(name = "store_settings")
 public class StoreSetting {
     @Id
-    private Short id = 1; // singleton
+    private Short id = 1;
 
     @Column(name = "queue_minutes", nullable = false)
     private int queueMinutes = 20;

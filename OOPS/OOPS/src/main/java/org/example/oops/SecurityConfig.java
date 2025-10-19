@@ -30,8 +30,8 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // 🟢 Public endpoints
                 .requestMatchers(
+
                 "/api/auth/**",
                 "/api/menus/**",
                 "/api/baskets/**",
@@ -39,9 +39,11 @@ public class SecurityConfig {
                 "/api/hours/**",    
                 "/error"
                 
+
+          
+
                 ).permitAll()
 
-                // 🔒 Everything else requires JWT
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

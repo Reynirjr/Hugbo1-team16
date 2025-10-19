@@ -6,6 +6,9 @@ org\example\oops\HoursController.class
 org\example\oops\Item.class
 org\example\oops\repository\OrderItemRepository.class
 org\example\oops\OpeningException.class
+
+org\example\oops\UserController.class
+
 org\example\oops\SettingsService.class
 org\example\oops\GenerateHash.class
 org\example\oops\repository\OrderRepository.class
