@@ -1,7 +1,10 @@
 package org.example.oops;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "opening_exceptions")
@@ -10,7 +13,7 @@ public class OpeningException {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd") 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     private String openTime;

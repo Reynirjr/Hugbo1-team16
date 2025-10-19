@@ -22,8 +22,8 @@ public class OrderService {
     }
 
     public Instant estimatePickupTime(Instant createdAt) {
-        int mins = settings.getCurrentQueueMinutes();
-        return createdAt.plus(mins, ChronoUnit.MINUTES);
+        int queueMins = settings.getQueueMinutes();
+        return createdAt.plus(queueMins, ChronoUnit.MINUTES);
     }
 
     @Transactional
