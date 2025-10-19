@@ -1,9 +1,14 @@
+org\example\oops\HoursService.class
 org\example\oops\repository\MenuRepository.class
 org\example\oops\BasketItem.class
 org\example\oops\security\JwtUtil.class
+org\example\oops\HoursController.class
 org\example\oops\Item.class
 org\example\oops\repository\OrderItemRepository.class
+org\example\oops\OpeningException.class
+
 org\example\oops\UserController.class
+
 org\example\oops\SettingsService.class
 org\example\oops\GenerateHash.class
 org\example\oops\repository\OrderRepository.class
@@ -25,7 +30,10 @@ org\example\oops\repository\BasketItemRepository.class
 org\example\oops\OrderService.class
 org\example\oops\repository\QueueTimeChangeRepository.class
 org\example\oops\StoreSetting.class
+org\example\oops\OpeningHour.class
 org\example\oops\CustomUserDetailsService.class
+org\example\oops\repository\OpeningHourRepository.class
+org\example\oops\repository\OpeningExceptionRepository.class
 org\example\oops\SecurityConfig.class
 org\example\oops\User.class
 org\example\oops\Order.class

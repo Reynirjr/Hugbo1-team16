@@ -85,4 +85,17 @@ SET password = EXCLUDED.password,
     role = EXCLUDED.role;
   
 
-ALTER TABLE items ADD COLUMN image_data BYTEA;
+CREATE TABLE IF NOT EXISTS opening_hours (
+    id SERIAL PRIMARY KEY,
+    weekday VARCHAR(20),
+    open_time VARCHAR(10),
+    close_time VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS opening_exceptions (
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    open_time VARCHAR(10),
+    close_time VARCHAR(10),
+    closed BOOLEAN
+);

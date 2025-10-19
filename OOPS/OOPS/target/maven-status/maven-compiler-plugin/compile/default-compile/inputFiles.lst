@@ -1,36 +1,41 @@
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\AuthController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Basket.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\BasketController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\BasketItem.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\BasketService.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\CreateItemRequest.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\CustomUserDetailsService.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\DebugController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\GenerateHash.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Item.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Menu.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\MenuController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\MenuSection.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\OopsApplication.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\Order.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\OrderController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\OrderItem.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\OrderService.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\QueueTimeChange.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketItemRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\ItemRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\MenuRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderItemRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\QueueTimeChangeRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\StoreSettingRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\repository\UserRepository.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\security\JwtAuthFilter.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\security\JwtUtil.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SecurityConfig.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SettingsController.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\SettingsService.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\StoreSetting.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\User.java
-C:\Users\jonat\Desktop\haskoli\Haust 2025\HBV501G - Hugbúnaðarverkefni 1\OOPS\OOPS\src\main\java\org\example\oops\UserController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\AuthController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Basket.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\BasketController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\BasketItem.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\BasketService.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\CreateItemRequest.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\CustomUserDetailsService.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\DebugController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\GenerateHash.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\HoursController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\HoursService.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Item.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Menu.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\MenuController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\MenuSection.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OopsApplication.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OpeningException.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OpeningHour.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\Order.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderItem.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderService.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\QueueTimeChange.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketItemRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\ItemRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\MenuRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OpeningExceptionRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OpeningHourRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderItemRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\QueueTimeChangeRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\StoreSettingRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\UserRepository.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\security\JwtAuthFilter.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\security\JwtUtil.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\SecurityConfig.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\SettingsController.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\SettingsService.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\StoreSetting.java
+C:\Users\helgi\Documents\hi_25\hugbo\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\User.java

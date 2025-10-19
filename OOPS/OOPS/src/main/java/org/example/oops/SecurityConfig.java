@@ -31,10 +31,17 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/api/auth/**",   
-                    "/api/menus/**",  
-                    "/error",
-                    "/api/baskets/**"
+
+                "/api/auth/**",
+                "/api/menus/**",
+                "/api/baskets/**",
+                "/api/orders/**",
+                "/api/hours/**",    
+                "/error"
+                
+
+          
+
                 ).permitAll()
 
                 .anyRequest().authenticated()

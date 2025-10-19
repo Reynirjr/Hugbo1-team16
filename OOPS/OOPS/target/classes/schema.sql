@@ -84,3 +84,18 @@ ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
   
+
+CREATE TABLE IF NOT EXISTS opening_hours (
+    id SERIAL PRIMARY KEY,
+    weekday VARCHAR(20),
+    open_time VARCHAR(10),
+    close_time VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS opening_exceptions (
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    open_time VARCHAR(10),
+    close_time VARCHAR(10),
+    closed BOOLEAN
+);
