@@ -46,7 +46,7 @@ public class Order {
     public Integer getTotalIsk() { return totalIsk; }
     public void setTotalIsk(Integer totalIsk) { this.totalIsk = totalIsk; }
     public Instant getEstimatedReadyAt() { return estimatedReadyAt; }
-    public void setEstimatedReadyAt(Instant estimatedReadyAt) { this.estimatedReadyAt = estimatedReadyAt; }
+    public void setEstimatedReadyAt(Instant t) { this.estimatedReadyAt = t; }
     public List<OrderItem> getItems() {return items;}
 
 }
