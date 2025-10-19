@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_phone TEXT,
   status TEXT NOT NULL DEFAULT 'RECEIVED',
   total_isk INT NOT NULL
+  estimated_ready_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -83,6 +84,6 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
-  
 
-ALTER TABLE items ADD COLUMN image_data BYTEA;
+ALTER TABLE IF EXISTS items ADD COLUMN IF NOT EXISTS image_data BYTEA;
+

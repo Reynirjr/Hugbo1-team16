@@ -5,16 +5,25 @@ import org.example.oops.repository.BasketRepository;
 import org.example.oops.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Service
 public class OrderService {
     private final BasketRepository baskets;
     private final OrderRepository orders;
+    private final SettingsService settings;
 
     public OrderService(BasketRepository baskets, OrderRepository orders) {
         this.baskets = baskets;
         this.orders = orders;
+        this.settings = settings;
+    }
+
+    public Instant estimatePickupTime(Instant createdAt) {
+        int mins = settings.getCurrentQueueMinutes();
+        return createdAt.plus(mins, ChronoUnit.MINUTES);
     }
 
     @Transactional
