@@ -29,6 +29,9 @@ public class Order {
     @Column(name = "total_isk", nullable = false)
     private Integer totalIsk = 0;
 
+    @Column(name = "estimated_ready_at")
+    private Instant estimatedReadyAt;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> items = new ArrayList<>();
 
@@ -42,6 +45,8 @@ public class Order {
     public void setStatus(String status) { this.status = status; }
     public Integer getTotalIsk() { return totalIsk; }
     public void setTotalIsk(Integer totalIsk) { this.totalIsk = totalIsk; }
+    public Instant getEstimatedReadyAt() { return estimatedReadyAt; }
+    public void setEstimatedReadyAt(Instant estimatedReadyAt) { this.estimatedReadyAt = estimatedReadyAt; }
     public List<OrderItem> getItems() {return items;}
 
 }

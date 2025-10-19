@@ -1,39 +1,68 @@
 package org.example.oops;
 
-
+import org.example.oops.repository.OrderRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-import java.util.UUID;
+import java.time.Instant;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
+
     private final OrderService service;
-    public OrderController(OrderService service){
+    private final OrderRepository orders;
+
+    public OrderController(OrderService service, OrderRepository orders) {
         this.service = service;
+        this.orders = orders;
     }
 
     @PostMapping
-    public Map<String, Object> create(@RequestParam String basketId,
-                                      @RequestParam(required = false) String phone) {
-        Order o = service.createFromBasket(UUID.fromString(basketId), phone);
-        return Map.of(
-                "orderId", o.getId(),
-                "status", o.getStatus(),
-                "totalIsk", o.getTotalIsk(),
-                "createdAt", o.getCreatedAt(),
-                "items", o.getItems()
-        );
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, Object> create(
+            @RequestParam UUID basketId,
+            @RequestParam(required = false) String phone
+    ) {
+        if (phone != null) phone = phone.trim();
+        Order o = service.createFromBasket(basketId, phone);
+        return orderPayload(o, service.estimatePickupTime(o.getCreatedAt()));
     }
 
     @GetMapping("/{id}")
-    public Order get(@PathVariable Integer id) {
-        return service.get(id);
+    public Map<String, Object> getOne(@PathVariable Integer id) {
+        Order o = service.get(id);
+        return orderPayload(o, service.estimatePickupTime(o.getCreatedAt()));
     }
 
+    @GetMapping("/by-phone")
+    public List<Map<String, Object>> getByPhone(@RequestParam String phone) {
+        String normalized = phone.trim();
+        return orders.findByCustomerPhoneOrderByIdDesc(normalized).stream()
+                .map(o -> orderPayload(o, service.estimatePickupTime(o.getCreatedAt())))
+                .collect(Collectors.toList());
+    }
 
-    public static void main(String[] args) {
-
+    private Map<String, Object> orderPayload(Order o, Instant eta) {
+        Map<String, Object> m = new LinkedHashMap<>();
+        m.put("orderId", o.getId());
+        m.put("createdAt", o.getCreatedAt());
+        m.put("status", o.getStatus());
+        m.put("totalIsk", o.getTotalIsk());
+        m.put("estimatedPickupAt", eta);
+        m.put("customerPhone", o.getCustomerPhone());
+        m.put("basketId", o.getBasketId());
+        m.put("items", o.getItems().stream().map(oi -> {
+            Map<String, Object> im = new LinkedHashMap<>();
+            im.put("id", oi.getId());
+            im.put("itemId", oi.getItemId());
+            im.put("itemName", oi.getItemName());
+            im.put("priceIsk", oi.getPriceIsk());
+            im.put("quantity", oi.getQuantity());
+            return im;
+        }).collect(Collectors.toList()));
+        return m;
     }
 }

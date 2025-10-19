@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_phone TEXT,
   status TEXT NOT NULL DEFAULT 'RECEIVED',
   total_isk INT NOT NULL
+  estimated_ready_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -83,7 +84,7 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
-  
+
 
 CREATE TABLE IF NOT EXISTS opening_hours (
     id SERIAL PRIMARY KEY,
