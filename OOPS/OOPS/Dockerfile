@@ -1,30 +1,22 @@
-# ---------- Build stage ----------
-FROM maven:3.9-eclipse-temurin-17 AS builder
-WORKDIR /workspace
-
-# Only copy pom first to leverage Docker layer caching
+# Importing JDK and copying required files
+FROM openjdk:19-jdk AS build
+WORKDIR /app
 COPY pom.xml .
-RUN mvn -q -B -e -DskipTests dependency:go-offline
+COPY src src
 
-# Now add sources and build
-COPY src ./src
-RUN mvn -q -B -DskipTests clean package
+# Copy Maven wrapper
+COPY mvnw .
+COPY .mvn .mvn
 
-# ---------- Runtime stage ----------
-FROM eclipse-temurin:17-jre
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0" \
-    APP_HOME=/app
-WORKDIR ${APP_HOME}
+# Set execution permission for the Maven wrapper
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package -DskipTests
 
-# copy the fat jar produced by Spring Boot (adjust name if your artifactId/version differs)
-COPY --from=builder /OOPS/OOPS/target/*.jar app.jar
+# Stage 2: Create the final Docker image using OpenJDK 19
+FROM openjdk:19-jdk
+VOLUME /tmp
 
-
-
+# Copy the JAR from the build stage
+COPY --from=build /app/target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
-
-
-STOPSIGNAL SIGTERM
-
-
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
