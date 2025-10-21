@@ -1,6 +1,8 @@
 spring:
   profiles:
-    active: dev
+    active: prod
+  application:
+    name: OOPS
 
 ---
 spring:
@@ -34,3 +36,35 @@ spring:
 logging:
   level:
     org.hibernate.tool.schema: DEBUG
+
+---
+# Production profile (for Render deployment)
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/menudb}?currentSchema=public
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Changed from validate to update for production
+    show-sql: false     # Disable in production
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: never       # Disable in production
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.tool.schema: ERROR
+    org.example.oops: INFO
+    org.springframework.security: INFO
