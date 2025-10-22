@@ -1,6 +1,11 @@
 spring:
   profiles:
-    active: dev
+    active: prod
+
+  application:
+    name: OOPS
+  jpa:
+    open-in-view: false
 
 ---
 spring:
@@ -8,8 +13,7 @@ spring:
     activate:
       on-profile: dev
 
-  application:
-    name: OOPS
+
 
   datasource:
     # Force the schema at the JDBC level
@@ -34,3 +38,46 @@ spring:
 logging:
   level:
     org.hibernate.tool.schema: DEBUG
+
+---
+# Production profile (for Render deployment)
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/menudb}?currentSchema=public
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: never
+
+  # TEMPORARY: Disable security to test database connection first
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.tool.schema: ERROR
+    org.example.oops: INFO
+    org.springframework.security: WARN
+    org.springframework.jdbc.core: DEBUG
+    com.zaxxer.hikari: DEBUG
