@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS orders (
   basket_id UUID,
   customer_phone TEXT,
   status TEXT NOT NULL DEFAULT 'RECEIVED',
-  total_isk INT NOT NULL
+  total_isk INT NOT NULL,
+  estimated_ready_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -83,7 +84,7 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
-  
+
 
 CREATE TABLE IF NOT EXISTS opening_hours (
     id SERIAL PRIMARY KEY,
@@ -99,3 +100,6 @@ CREATE TABLE IF NOT EXISTS opening_exceptions (
     close_time VARCHAR(10),
     closed BOOLEAN
 );
+ALTER TABLE orders
+    ADD CONSTRAINT orders_status_check
+        CHECK (status IN ('RECEIVED','PREPARING','READY','PICKED_UP'));

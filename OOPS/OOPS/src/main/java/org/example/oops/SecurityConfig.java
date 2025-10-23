@@ -38,14 +38,15 @@ public class SecurityConfig {
                 "/api/menus/**",
                 "/api/baskets/**",
                 "/api/orders/**",
-                "/api/hours/**",    
+                "/api/hours/**",
                 "/error"
-                
 
-          
+
+
 
                 ).permitAll()
 
+                // 🔒 Everything else requires JWT
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
