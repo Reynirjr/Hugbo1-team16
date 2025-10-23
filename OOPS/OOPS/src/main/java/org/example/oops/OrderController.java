@@ -2,6 +2,7 @@ package org.example.oops;
 
 import org.example.oops.repository.OrderRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -38,6 +39,7 @@ public class OrderController {
                 .stream().map(this::orderPayload).toList();
     }
 
+    @PreAuthorize("hasAnyRole('SUPERUSER','STAFF')")
     @PutMapping("/{id}/status")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> updateStatus(@PathVariable Integer id,
