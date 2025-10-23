@@ -3,6 +3,7 @@ package org.example.oops;
 import org.example.oops.security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -30,27 +31,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/menus/**").permitAll()
+                        .requestMatchers("/api/baskets/**").permitAll()
+                        .requestMatchers("/api/hours/**").permitAll()
+                        .requestMatchers("/error").permitAll()
 
-                "/api/auth/**",
-                "/api/menus/**",
-                "/api/baskets/**",
-                "/api/orders/**",
-                "/api/hours/**",
-                "/error"
+                        .requestMatchers(HttpMethod.POST, "/api/orders").permitAll()
+                        .requestMatchers(HttpMethod.GET,  "/api/orders/**").permitAll()
 
+                        .requestMatchers(HttpMethod.PUT, "/api/orders/*/status")
+                        .hasAnyRole("SUPERUSER","STAFF")
 
-
-
-                ).permitAll()
-
-                // 🔒 Everything else requires JWT
-                .anyRequest().authenticated()
-            )
-            .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
