@@ -34,19 +34,22 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/menus/**").permitAll()
                         .requestMatchers("/api/baskets/**").permitAll()
                         .requestMatchers("/api/hours/**").permitAll()
                         .requestMatchers("/error").permitAll()
 
+                        .requestMatchers(HttpMethod.GET, "/api/menus/**").permitAll()
+
+                        .requestMatchers(HttpMethod.POST,   "/api/menus/*/items/*/image").hasRole("SUPERUSER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/menus/*/items/*/image").hasRole("SUPERUSER")
+
                         .requestMatchers(HttpMethod.POST, "/api/orders").permitAll()
                         .requestMatchers(HttpMethod.GET,  "/api/orders/**").permitAll()
-
-                        .requestMatchers(HttpMethod.PUT, "/api/orders/*/status")
-                        .hasAnyRole("SUPERUSER","STAFF")
+                        .requestMatchers(HttpMethod.PUT,  "/api/orders/*/status").hasAnyRole("SUPERUSER","STAFF")
 
                         .anyRequest().authenticated()
                 )
+
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
