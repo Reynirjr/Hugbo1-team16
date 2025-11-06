@@ -83,3 +83,6 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
+  
+
+ALTER TABLE items ADD COLUMN image_data BYTEA;
