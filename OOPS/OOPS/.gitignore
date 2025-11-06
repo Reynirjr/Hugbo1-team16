@@ -23,6 +23,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.env
 
 ### NetBeans ###
 /nbproject/private/
@@ -38,5 +39,3 @@ build/
 .vscode/
 
 
-src/main/resources/application.properties
-src/main/resources/application-*.properties
