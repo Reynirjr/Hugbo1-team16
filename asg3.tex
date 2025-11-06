@@ -68,11 +68,12 @@
 
 % --- Title Info ---
 \title{Assignment 3 (Hugbo) -- Construction 1}
-\author{Helgi Freyr Davíðsson (hfd2)}
+\author{Team 16 - brj46, hfd2, jjo1, ros30}
 \date{October 2025}
 
 \begin{document}
 \maketitle
+
 
 \section*{Link to GitHub Repository}
 \texttt{https://github.com/Reynirjr/Hugbo1-team16}
@@ -146,6 +147,44 @@ Response:
 }
 \end{lstlisting}
 
+\section*{UC10 -- Set Order Status (Staff/Admin)}
+
+After signing in as a staff or admin user, you can read and update order status.
+
+\textbf{Read order:}
+\begin{lstlisting}
+GET http://localhost:8080/api/orders/12
+\end{lstlisting}
+
+Example response:
+\begin{lstlisting}[language=json]
+{
+  "orderId": 12,
+  "createdAt": "2025-10-15T17:25:44.345Z",
+  "status": "RECEIVED",
+  "totalIsk": 2600,
+  "estimatedPickupAt": "2025-10-15T17:45:44.345Z",
+  "customerPhone": "555-1234",
+  "items": [ ... ]
+}
+\end{lstlisting}
+
+\textbf{Set order status:}
+\begin{lstlisting}
+PUT http://localhost:8080/api/orders/12/status?value=PREPARING
+PUT http://localhost:8080/api/orders/12/status?value=READY
+PUT http://localhost:8080/api/orders/12/status?value=PICKED_UP
+\end{lstlisting}
+
+Response example:
+\begin{lstlisting}[language=json]
+{
+  "id": 12,
+  "status": "PREPARING",
+  "updatedAt": "2025-10-15T17:45:10.123Z"
+}
+\end{lstlisting}
+
 \section*{UC2 -- Manage Menu}
 
 You must authenticate as an admin using the bearer token from UC5.
@@ -164,6 +203,50 @@ Body:
   "available": true,
   "tags": ["beef", "popular"],
   "sectionId": 1
+}
+\end{lstlisting}
+
+\section*{UC3 -- Set Queue Time}
+
+To get the current queue time (for staff and admin):
+\begin{lstlisting}
+GET http://localhost:8080/api/settings/queue-time
+\end{lstlisting}
+
+Response:
+\begin{lstlisting}[language=json]
+{
+    "minutes": 20
+}
+\end{lstlisting}
+
+To update the queue time:
+\begin{lstlisting}
+PUT http://localhost:8080/api/settings/queue-time?minutes=20
+\end{lstlisting}
+
+Response:
+\begin{lstlisting}[language=json]
+{
+    "minutes": 20,
+    "updatedBy": "system",
+    "updatedAt": "2025-10-15T16:59:02.858027Z"
+}
+\end{lstlisting}
+
+Example of error handling if the input is out of range:
+\begin{lstlisting}
+PUT http://localhost:8080/api/settings/queue-time?minutes=9999
+\end{lstlisting}
+
+Error response:
+\begin{lstlisting}[language=json]
+{
+    "timestamp": "2025-10-19T22:16:31.394+00:00",
+    "status": 500,
+    "error": "Internal Server Error",
+    "message": "Queue time must be between 0 and 180 minutes.",
+    "path": "/api/settings/queue-time"
 }
 \end{lstlisting}
 
@@ -211,6 +294,7 @@ The project is nearing completion, with most major use cases implemented and ver
     \item Menu management (UC2), order placement (UC1), and queue time updates (UC3) are fully functional.
     \item Opening hours and exceptions (UC7) implemented and tested.
     \item UC9 (View Order Status) verified via Postman.
+    \item UC10 (Set Order Status) successfully tested with PUT requests.
 \end{itemize}
 
 \subsection*{Outstanding Work}

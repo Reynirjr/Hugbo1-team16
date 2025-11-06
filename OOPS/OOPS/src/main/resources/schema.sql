@@ -100,6 +100,9 @@ CREATE TABLE IF NOT EXISTS opening_exceptions (
     close_time VARCHAR(10),
     closed BOOLEAN
 );
+
+ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check;
+
 ALTER TABLE orders
     ADD CONSTRAINT orders_status_check
-        CHECK (status IN ('RECEIVED','PREPARING','READY','PICKED_UP'));
+    CHECK (status IN ('RECEIVED','PREPARING','READY','PICKED_UP'));
