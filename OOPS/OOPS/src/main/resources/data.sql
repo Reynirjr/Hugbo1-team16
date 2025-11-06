@@ -1,5 +1,7 @@
 -- ===========================================
 -- USERS
+-- admin / staff
+-- admin123 / staff123
 -- ===========================================
 INSERT INTO users (username, password, role)
 VALUES
