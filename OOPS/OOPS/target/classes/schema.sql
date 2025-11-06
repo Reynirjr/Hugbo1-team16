@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_phone TEXT,
   status TEXT NOT NULL DEFAULT 'RECEIVED',
   total_isk INT NOT NULL
+  estimated_ready_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -83,6 +84,19 @@ VALUES
 ON CONFLICT (username) DO UPDATE
 SET password = EXCLUDED.password,
     role = EXCLUDED.role;
-  
 
-ALTER TABLE items ADD COLUMN image_data BYTEA;
+
+CREATE TABLE IF NOT EXISTS opening_hours (
+    id SERIAL PRIMARY KEY,
+    weekday VARCHAR(20),
+    open_time VARCHAR(10),
+    close_time VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS opening_exceptions (
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    open_time VARCHAR(10),
+    close_time VARCHAR(10),
+    closed BOOLEAN
+);

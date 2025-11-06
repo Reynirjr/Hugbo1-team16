@@ -1,8 +1,12 @@
 package org.example.oops;
 
-
+import org.example.oops.repository.OrderRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,29 +14,56 @@ import java.util.UUID;
 @RequestMapping("/api/orders")
 public class OrderController {
     private final OrderService service;
-    public OrderController(OrderService service){
-        this.service = service;
+    private final OrderRepository orders;
+
+    public OrderController(OrderService service, OrderRepository orders) {
+        this.service = service; this.orders = orders;
     }
 
     @PostMapping
-    public Map<String, Object> create(@RequestParam String basketId,
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, Object> create(@RequestParam UUID basketId,
                                       @RequestParam(required = false) String phone) {
-        Order o = service.createFromBasket(UUID.fromString(basketId), phone);
-        return Map.of(
-                "orderId", o.getId(),
-                "status", o.getStatus(),
-                "totalIsk", o.getTotalIsk(),
-                "createdAt", o.getCreatedAt(),
-                "items", o.getItems()
-        );
+        Order o = service.createFromBasket(basketId, phone);
+        return orderPayload(o);
     }
 
-    @GetMapping
-    public Order get(@PathVariable Integer id){
-        return service.get(id);
+    @GetMapping("/{id}")
+    public Map<String, Object> getOne(@PathVariable Integer id) {
+        return orderPayload(service.get(id));
     }
 
-    public static void main(String[] args) {
+    @GetMapping("/by-phone")
+    public List<Map<String, Object>> getByPhone(@RequestParam String phone) {
+        return orders.findByCustomerPhoneOrderByIdDesc(phone)
+                .stream().map(this::orderPayload).toList();
+    }
 
+    @PreAuthorize("hasAnyRole('SUPERUSER','STAFF')")
+    @PutMapping("/{id}/status")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Object> updateStatus(@PathVariable Integer id,
+                                            @RequestParam String value) {
+        Order o = service.changeStatus(id, value);
+        return orderPayload(o);
+    }
+
+    private Map<String, Object> orderPayload(Order o) {
+        Map<String, Object> m = new LinkedHashMap<>();
+        m.put("orderId", o.getId());
+        m.put("createdAt", o.getCreatedAt());
+        m.put("status", o.getStatus());
+        m.put("totalIsk", o.getTotalIsk());
+        m.put("estimatedPickupAt", o.getEstimatedReadyAt());
+        m.put("customerPhone", o.getCustomerPhone());
+        m.put("basketId", o.getBasketId());
+        m.put("items", o.getItems().stream().map(oi -> Map.of(
+                "id", oi.getId(),
+                "itemId", oi.getItemId(),
+                "itemName", oi.getItemName(),
+                "priceIsk", oi.getPriceIsk(),
+                "quantity", oi.getQuantity()
+        )).toList());
+        return m;
     }
 }

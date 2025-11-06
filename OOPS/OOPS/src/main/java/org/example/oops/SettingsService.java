@@ -10,8 +10,8 @@ import java.time.Instant;
 
 @Service
 public class SettingsService {
-    private static final int MIN_Q = 0;    // allow 0 = "ASAP"
-    private static final int MAX_Q = 180;  // 3 hours hard cap
+    private static final int MIN_Q = 0;
+    private static final int MAX_Q = 180;
 
     private final StoreSettingRepository settingsRepo;
     private final QueueTimeChangeRepository changesRepo;
