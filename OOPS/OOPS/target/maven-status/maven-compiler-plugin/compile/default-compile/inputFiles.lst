@@ -21,6 +21,9 @@ C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderItem.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\OrderService.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\QueueTimeChange.java
+C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\reports\DailyTotalsRow.java
+C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\reports\ItemBreakdownRow.java
+C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\ReportsController.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketItemRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\BasketRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\ItemRepository.java
@@ -30,8 +33,10 @@ C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderItemRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\OrderRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\QueueTimeChangeRepository.java
+C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\ReportRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\StoreSettingRepository.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\repository\UserRepository.java
+C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\SalesReportService.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\security\JwtAuthFilter.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\security\JwtUtil.java
 C:\Users\benja\OneDrive\Desktop\hugbo1\Hugbo1-team16\OOPS\OOPS\src\main\java\org\example\oops\SecurityConfig.java
