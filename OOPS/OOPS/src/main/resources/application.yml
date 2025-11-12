@@ -23,11 +23,10 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate    # we validate against the existing schema
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
-        # keep naming predictable; optional, but helps
         default_schema: public
 
   sql:
@@ -39,7 +38,6 @@ logging:
     org.hibernate.tool.schema: DEBUG
 
 ---
-# Production profile (Render)
 spring:
   config:
     activate:
@@ -48,8 +46,8 @@ spring:
 
   sql:
     init:
-      mode: always          # run schema.sql / data.sql on startup
-      continue-on-error: true  # optional: don’t fail if objects already exist
+      mode: always
+      continue-on-error: true
 
   datasource:
     url: ${SPRING_DATASOURCE_URL}
@@ -62,7 +60,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none        # let schema.sql own the schema (recommended)
+      ddl-auto: none
     show-sql: false
     properties:
       hibernate:

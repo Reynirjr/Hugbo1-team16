@@ -43,6 +43,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,   "/api/menus/*/items/*/image").hasRole("SUPERUSER")
                         .requestMatchers(HttpMethod.DELETE, "/api/menus/*/items/*/image").hasRole("SUPERUSER")
 
+                        .requestMatchers(HttpMethod.GET, "/api/reports/sales.csv").hasRole("SUPERUSER")
+                        .requestMatchers(HttpMethod.GET, "/api/reports/sales").authenticated()
+
+
+
                         .requestMatchers(HttpMethod.POST, "/api/orders").permitAll()
                         .requestMatchers(HttpMethod.GET,  "/api/orders/**").permitAll()
                         .requestMatchers(HttpMethod.PUT,  "/api/orders/*/status").hasAnyRole("SUPERUSER","STAFF")
