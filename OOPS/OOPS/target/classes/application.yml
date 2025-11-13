@@ -1,38 +1,78 @@
-# --- DEV (local) ---
+spring:
+  profiles:
+    active: prod
 
+  application:
+    name: OOPS
+  jpa:
+    open-in-view: false
+
+---
 spring:
   config:
     activate:
       on-profile: dev
+
+
+
   datasource:
     url: jdbc:postgresql://localhost:5432/menudb?currentSchema=public
     username: postgres
-    password: HelloKitty.17
+    password: postgres
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
     show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
+
   sql:
     init:
-      mode: never
+      mode: always
+
+logging:
+  level:
+    org.hibernate.tool.schema: DEBUG
 
 ---
-# --- PROD (Render) ---
 spring:
   config:
     activate:
       on-profile: prod
+
+
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+
   jpa:
     hibernate:
       ddl-auto: none
-  sql:
-    init:
-      mode: never          # recommended in prod, let migrations own schema
+    show-sql: false
+    properties:
+      hibernate:
+        default_schema: public
+
 server:
   port: ${PORT:8080}
+
+logging:
+  level:
+    org.hibernate.tool.schema: ERROR
+    org.example.oops: INFO
+    org.springframework.security: WARN
+    org.springframework.jdbc.core: DEBUG
+    com.zaxxer.hikari: DEBUG
