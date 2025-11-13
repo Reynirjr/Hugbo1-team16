@@ -100,10 +100,3 @@ CREATE TABLE IF NOT EXISTS opening_exceptions (
     close_time VARCHAR(10),
     closed BOOLEAN
 );
-ALTER TABLE orders
-    ADD CONSTRAINT orders_status_check
-        CHECK (status IN ('RECEIVED','PREPARING','READY','PICKED_UP'));
-
-ALTER TABLE items
-    ADD COLUMN IF NOT EXISTS image_type TEXT,
-    ADD COLUMN IF NOT EXISTS image_updated_at TIMESTAMPTZ DEFAULT NOW();
