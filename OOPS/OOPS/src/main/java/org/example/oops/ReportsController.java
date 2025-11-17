@@ -1,3 +1,5 @@
+package org.example.oops;
+
 import org.example.oops.SalesReportService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
