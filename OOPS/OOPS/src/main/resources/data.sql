@@ -124,3 +124,16 @@ VALUES
 INSERT INTO store_settings (id, queue_minutes, updated_by)
 VALUES (1, 20, 'admin')
 ON CONFLICT (id) DO NOTHING;
+
+
+-- ===========================================
+-- Opening Hours
+-- ===========================================
+INSERT INTO opening_hours (weekday, open_time, close_time) VALUES
+('MONDAY',    '11:00', '22:00'),
+('TUESDAY',   '11:00', '22:00'),
+('WEDNESDAY', '11:00', '22:00'),
+('THURSDAY',  '11:00', '23:00'),
+('FRIDAY',    '11:00', '23:00'),
+('SATURDAY',  '12:00', '23:00'),
+('SUNDAY',    '12:00', '21:00');
