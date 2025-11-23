@@ -1,13 +1,16 @@
 package org.example.oops;
 
-import org.example.oops.repository.MenuRepository;
 import org.example.oops.repository.ItemRepository;
+import org.example.oops.repository.MenuRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
-
+import java.io.IOException;
 import java.util.List;
 
 
@@ -124,5 +127,67 @@ public class MenuController {
         }
         item.setAvailable(available);
         return items.save(item);
+    }
+    @PreAuthorize("hasRole('SUPERUSER')")
+    @PostMapping(
+            path = "/{menuId}/items/{itemId}/image",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
+    public Item uploadItemImage(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId,
+            @RequestParam("file") MultipartFile file
+    ) {
+        Item item = items.findByMenuIdAndItemId(menuId, itemId);
+        if (item == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
+        }
+
+        // Basic validation
+        String ct = file.getContentType();
+        if (ct == null || !(ct.equals("image/jpeg") || ct.equals("image/png") || ct.equals("image/webp"))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported image type. Use JPEG/PNG/WEBP.");
+        }
+        if (file.getSize() > 2 * 1024 * 1024) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image too large (max 2MB).");
+        }
+
+        try {
+            item.setImageData(file.getBytes());
+            return items.save(item);
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Failed to read image file");
+        }
+    }
+
+    @PreAuthorize("hasRole('SUPERUSER')")
+    @DeleteMapping("/{menuId}/items/{itemId}/image")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteItemImage(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId
+    ) {
+        Item item = items.findByMenuIdAndItemId(menuId, itemId);
+        if (item == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found in this menu");
+        }
+        item.setImageData(new byte[0]);
+        items.save(item);
+    }
+
+    @GetMapping("/{menuId}/items/{itemId}/image")
+    public ResponseEntity<byte[]> getItemImage(
+            @PathVariable Integer menuId,
+            @PathVariable Integer itemId
+    ) {
+        Item item = items.findByMenuIdAndItemId(menuId, itemId);
+        if (item == null || item.getImageData() == null || item.getImageData().length == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No image for this item");
+        }
+
+            return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .header("Cache-Control", "public, max-age=86400, immutable")
+                .body(item.getImageData());
     }
 }
