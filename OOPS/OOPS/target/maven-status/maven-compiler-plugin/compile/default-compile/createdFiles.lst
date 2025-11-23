@@ -24,7 +24,6 @@ org\example\oops\repository\OpeningExceptionRepository.class
 org\example\oops\User.class
 org\example\oops\AuthController.class
 org\example\oops\DebugController.class
-ReportsController.class
 org\example\oops\HoursController.class
 org\example\oops\reports\DailyTotalsRow.class
 org\example\oops\repository\OrderItemRepository.class
@@ -33,6 +32,7 @@ org\example\oops\SalesReportService.class
 org\example\oops\repository\ItemRepository.class
 org\example\oops\QueueTimeChange.class
 org\example\oops\repository\UserRepository.class
+org\example\oops\ReportsController.class
 org\example\oops\MenuController.class
 org\example\oops\SalesReportService$DailyRow.class
 org\example\oops\MenuSection.class
