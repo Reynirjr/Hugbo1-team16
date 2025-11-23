@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev,reports
 
   application:
     name: OOPS
@@ -18,7 +18,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/menudb?currentSchema=public
     username: postgres
-    password: postgres
+    password: HelloKitty.17
     driver-class-name: org.postgresql.Driver
 
   jpa:

@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.Instant;
 import java.util.List;
 
-@Profile("reports")
+//@Profile("reports")
 public interface ReportRepository extends Repository<Order, Integer> {
 
     @Query(value = """

@@ -16,6 +16,7 @@ target/
 ###application###
 **/application.properties
 **/application-*.properties
+**/main/resources/application.yml
 
 
 ### IntelliJ IDEA ###
