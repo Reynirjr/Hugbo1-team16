@@ -96,20 +96,30 @@ public class OrderController {
         boolean overdue = remaining < 0;
         long remainingClamped = Math.max(0,remaining);
 
-        String message;
-        if (overdue && elapsedMinutes < queueMinutes + 10) {
-            message = "Pöntunin þín ætti að vera að klárast núna.";
-        } else if (overdue) {
-            message = "Við erum aðeina á eftir áætlun - vinsamlegast hafðu við starfsfólk.";
-        }else if (remainingClamped <= 5) {
-            message = "pöntunin þín er næstum ready.";
-        }else {
-            message = "Áætlaður biðtími er um " + remainingClamped + " mínútur.";
-        }
         Instant estimatedReady = o.getEstimatedReadyAt();
         if(estimatedReady == null){
             estimatedReady = o.getCreatedAt().plus(Duration.ofMinutes(queueMinutes));
         }
+
+        String message;
+        if ("PICKED_UP".equals(o.getStatus())) {
+            remainingClamped = 0;
+            overdue = false;
+            message = "Pöntunin þín hefur verið sótt. Takk fyrir viðskiptin!";
+
+        } else if ("READY".equals(o.getStatus())) {
+            message = "Pöntunin þín er tilbúin, þú mátt sækja hana núna.";
+
+        } else if (overdue && elapsedMinutes < queueMinutes + 10) {
+            message = "Pöntunin þín ætti að vera að klárast núna.";
+        } else if (overdue) {
+            message = "Við erum aðeins á eftir áætlun – vinsamlegast hafðu samband við starfsfólk.";
+        } else if (remainingClamped <= 5) {
+            message = "Pöntunin þín er næstum tilbúin.";
+        } else {
+            message = "Áætlaður biðtími er um " + remainingClamped + " mínútur.";
+        }
+
         return Map.of(
                 "orderId", o.getId(),
                 "status", o.getStatus(),
@@ -117,7 +127,11 @@ public class OrderController {
                 "estimatedReadyAt", estimatedReady,
                 "queueMinutesAtOrderTime", queueMinutes,
                 "elapsedMinutes", elapsedMinutes,
+
                 "remainingMinutes", remainingClamped,
+
+                "estimatedTimeLeftMinutes", remainingClamped,
+
                 "overdue", overdue,
                 "message", message
         );

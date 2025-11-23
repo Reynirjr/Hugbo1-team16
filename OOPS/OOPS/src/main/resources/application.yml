@@ -18,7 +18,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/menudb?currentSchema=public
     username: postgres
-    password: HelloKitty.17
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:

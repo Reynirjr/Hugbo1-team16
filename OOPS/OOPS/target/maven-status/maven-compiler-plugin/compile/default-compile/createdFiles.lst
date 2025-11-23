@@ -23,7 +23,11 @@ org\example\oops\CustomUserDetailsService.class
 org\example\oops\repository\OpeningExceptionRepository.class
 org\example\oops\User.class
 org\example\oops\AuthController.class
+<<<<<<< HEAD
 org\example\oops\DebugController.class
+=======
+ReportsController.class
+>>>>>>> e4b2d967b7fc513c17c0081affe77448e8171a11
 org\example\oops\HoursController.class
 org\example\oops\reports\DailyTotalsRow.class
 org\example\oops\repository\OrderItemRepository.class
